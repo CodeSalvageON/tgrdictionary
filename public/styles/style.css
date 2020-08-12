@@ -1,0 +1,74 @@
+/* Natural Tags */
+
+body{
+  background-color: black;
+}
+
+h1, h2, h3, h4, p{
+  color: #6699ff;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+/* Classes */
+
+.center{
+  margin: auto;
+  text-align: center;
+}
+
+.block{
+  display: inline-block;
+}
+
+.option-block{
+  width: 33%;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.float-left{
+  float: left;
+}
+
+.zoom {
+  margin: 0 auto;
+  transition: transform .5s;
+}
+
+.zoom:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+
+.fixed{
+  position: fixed;
+}
+
+.dark-gray{
+  background-color: gray;
+}
+
+/* Ids */
+
+#index-title{
+  border-radius: 20px;
+  background-color: #333300;
+}
+
+#dictionary-definitions{
+  background-color: aquamarine;
+}
+
+#write-definitions{
+  background-color: aqua;
+}
+
+#dictionary-logo{
+  top: 0px;
+  left: 0px;
+  border-radius: 20px;
+}
+
+#dictionary-logo:hover{
+  cursor: pointer;
+}
