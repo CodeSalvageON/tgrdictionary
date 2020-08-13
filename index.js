@@ -1,5 +1,10 @@
 const fs = require('fs');
+const { JSDOM } = require('jsdom');
 const express = require('express');
+const createDOMPurify = require('dompurify');
+
+const window = new JSDOM('').window;
+const DOMPurify = createDOMPurify(window);
 
 var app = require('express')();
 var io = require('socket.io')(http);
@@ -28,6 +33,7 @@ const dictionary_head = `
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
   </head>
   <body>
+    <a href="https://tgrdictionary.codesalvageon.repl.co/definitions"><h2>Definitions</h2></a>
 `;
 const dictionary_footer = `
   </body>
@@ -35,6 +41,7 @@ const dictionary_footer = `
 `;
 
 var def_list = ``;
+var words;
 
 //Static
 app.get('/', function(req, res){
@@ -63,11 +70,38 @@ app.get('/definitions', function(req, res){
     files.forEach(file => {
       var fixed_file_name = file.replace('public/dictionary/', "");
       var repaired_file_name = file.replace('.html', "");
+      var cleaned_file_name = DOMPurify.sanitize(repaired_file_name);
 
-      def_list = def_list + `<a href="https://tgrdictionary.codesalvageon.repl.co/`+file+`"><h2>`+repaired_file_name+`</h2></a>`;
+      var linked_file = file.replace("public", "");
+
+      def_list = def_list + `<a href="https://tgrdictionary.codesalvageon.repl.co/dictionary/`+linked_file+`"><h2>`+cleaned_file_name+`</h2></a>`;
       console.log(def_list);
     });
   });
 
   res.send(dictionary_head+def_list+dictionary_footer);
+  def_list = '';
+});
+
+//POST requests
+app.post('/create_word', function(req, res){
+  const word_name = req.body.word;
+  const definition_name = req.body.definition;
+
+  const word_dir = __dirname+'/public/dictionary/'+word_name.toLowerCase()+'.html';
+
+  if (fs.existsSync(word_dir)){
+    fs.appendFileSync(word_dir, `
+<h1>`+word_name+`</h1>
+<h3>`+definition_name+`</h3>
+  `);
+  }
+  else{
+    fs.appendFileSync(word_dir, dictionary_head+`
+<h1>`+word_name+`</h1>
+<h3>`+definition_name+`</h3>
+  `+dictionary_footer);
+  }
+
+  res.redirect('/dictionary');
 });

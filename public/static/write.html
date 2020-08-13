@@ -13,7 +13,24 @@
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap" rel="stylesheet">
   </head>
   <body>
-    <div>
+    <div class="fixed dark-gray" id="write-logo">
+      <img src="https://tgrdictionary.codesalvageon.repl.co/images/logo.png" />
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <div class="center">
+      <form action="https://tgrdictionary.codesalvageon.repl.co/create_word" method="POST">
+        <h1>Word: <input type="text" name="word" class="text-input" maxlength="25"/></h1>
+        <h2>Definition:</h2>
+        <textarea rows="10" cols="50" class="textarea" name="definition"></textarea>
+        <center><button class="center button zoom">Publish Word</button></center>
+      </form>
     </div>
 
     <!-- JQuery -->

@@ -11,7 +11,9 @@
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "dompurify": "^2.0.12",
     "express": "^4.17.1",
+    "jsdom": "^16.4.0",
     "socket.io": "^2.3.0"
   }
 }

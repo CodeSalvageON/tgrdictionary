@@ -10,3 +10,7 @@ $("#write-definitions").click(function(){
 $("#dictionary-logo").click(function(){
   location = 'https://tgrdictionary.codesalvageon.repl.co';
 });
+
+$("#write-logo").click(function(){
+  location = 'https://tgrdictionary.codesalvageon.repl.co';
+});

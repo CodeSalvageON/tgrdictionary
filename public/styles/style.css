@@ -48,6 +48,29 @@ h1, h2, h3, h4, p{
   background-color: gray;
 }
 
+.text-input{
+  color: aquamarine;
+  background-color: black;
+  border-top-color: black;
+  border-left-color: black;
+  border-right-color: black;
+  border-bottom-color: white;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.textarea{
+  color: blue;
+  border-radius: 20px;
+  font-family: 'Titillium Web', sans-serif;
+}
+
+.button{
+  border: none;
+  border-radius: 10px;
+  background-color: #6699ff;
+  font-family: 'Titillium Web', sans-serif;
+}
+
 /* Ids */
 
 #index-title{
@@ -70,5 +93,15 @@ h1, h2, h3, h4, p{
 }
 
 #dictionary-logo:hover{
+  cursor: pointer;
+}
+
+#write-logo{
+  top: 0px;
+  left: 0px;
+  border-radius: 20px;
+}
+
+#write-logo:hover{
   cursor: pointer;
 }
